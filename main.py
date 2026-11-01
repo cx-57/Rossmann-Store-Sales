@@ -2,12 +2,12 @@
 
 from pathlib import Path
 
-from model import predict_sales, train_model
-from preprocessing import prepare_data
+from src.model import predict_sales, train_model
+from src.preprocessing import prepare_data
 
 
 def main():
-    data_dir = Path(__file__).resolve().parent
+    data_dir = Path(__file__).resolve().parent / "data"
     X_train, X_val, X_test, y_train, y_val = prepare_data(data_dir)
     model = train_model(X_train, y_train, X_val, y_val)
     sales_predictions = predict_sales(model, X_test)
